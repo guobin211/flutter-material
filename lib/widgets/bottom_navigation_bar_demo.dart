@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// 底部tab栏
+/// 底部导航栏
 class BottomNavigationBarDemo extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -8,6 +8,7 @@ class BottomNavigationBarDemo extends StatefulWidget {
   }
 }
 
+/// 底部导航实体
 class _BottomNavigationBarDemoState extends State<BottomNavigationBarDemo> {
   int _currentIndex = 0;
 
