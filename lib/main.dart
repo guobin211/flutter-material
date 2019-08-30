@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets/bottom_navigation_bar_demo.dart';
 import 'package:flutter_app/widgets/drawer_demo.dart';
+import 'package:flutter_app/widgets/image_demo.dart';
 import 'package:flutter_app/widgets/text_demo.dart';
 
 void main() => runApp(MyApp());
@@ -70,7 +71,7 @@ class Home extends StatelessWidget {
         body: TabBarView(
             children: [
               TextDemo(),
-              RichTextDemo(),
+              ImageDemo(),
               ContainerDemo(),
             ]),
         drawer: DrawerDemo(),
