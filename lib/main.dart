@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/routes/navigation_demo.dart';
+import 'package:flutter_app/widgets/base_layout.dart';
 import 'package:flutter_app/widgets/bottom_navigation_bar_demo.dart';
 import 'package:flutter_app/widgets/drawer_demo.dart';
+import 'package:flutter_app/widgets/grid_view_demo.dart';
 import 'package:flutter_app/widgets/image_demo.dart';
+import 'package:flutter_app/widgets/list_view_demo.dart';
+import 'package:flutter_app/widgets/page_view.dart';
+import 'package:flutter_app/widgets/sliver_demo.dart';
 import 'package:flutter_app/widgets/text_demo.dart';
 
 void main() => runApp(MyApp());
@@ -21,7 +27,18 @@ class MyApp extends StatelessWidget {
         highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
         splashColor: Colors.white70,
       ),
-      home: Home(_title),
+      home: NavigationDemo(),
+//      initialRoute: '/about',
+      routes: {
+        '/about': (context) => RouterPage(
+              title: 'about',
+            ),
+        '/think': (context) => RouterPage(
+              title: 'think',
+            ),
+      },
+//      home: Home(_title),
+//      home: SliverDemo(),
     );
   }
 }
@@ -43,11 +60,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
-          leading: IconButton(icon: Icon(Icons.menu), tooltip: '导航栏', onPressed: _menuPressed),
+          leading: IconButton(
+              icon: Icon(Icons.menu), tooltip: '导航栏', onPressed: _menuPressed),
           title: Text(_title, style: TextStyle(fontSize: 20.0)),
           actions: <Widget>[
             IconButton(
@@ -66,14 +84,15 @@ class Home extends StatelessWidget {
                 Tab(icon: Icon(Icons.local_florist)),
                 Tab(icon: Icon(Icons.change_history)),
                 Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.view_array)),
               ]),
         ),
-        body: TabBarView(
-            children: [
-              TextDemo(),
-              ImageDemo(),
-              ContainerDemo(),
-            ]),
+        body: TabBarView(children: [
+          ListViewDemo(),
+          SliverDemo(),
+          ContainerDemo(),
+          GridViewDemo(),
+        ]),
         drawer: DrawerDemo(),
         bottomNavigationBar: BottomNavigationBarDemo(),
       ),
