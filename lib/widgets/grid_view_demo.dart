@@ -7,17 +7,19 @@ import '../models/post.dart';
 ///
 
 class GridViewDemo extends StatelessWidget {
-
   Widget _gridItemBuild(BuildContext context, int index) {
     return Container(
-      child: Image.network(posts[index].imageUrl, fit: BoxFit.cover,),
+      child: Image.network(
+        posts[index].imageUrl,
+        fit: BoxFit.cover,
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-       padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       itemCount: posts.length,
       itemBuilder: _gridItemBuild,
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
