@@ -7,11 +7,11 @@ class MyWidget extends StatefulWidget {
   final String title;
 
   @override
-  _MySatateWidget createState() => _MySatateWidget();
+  _MyStateWidget createState() => _MyStateWidget();
 }
 
 /// 实现状态
-class _MySatateWidget extends State<MyWidget> {
+class _MyStateWidget extends State<MyWidget> {
   int _count = 1;
   String _name = '有状态组件';
 
