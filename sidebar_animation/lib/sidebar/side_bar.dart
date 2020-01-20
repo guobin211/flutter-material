@@ -14,7 +14,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
   StreamController<bool> isSidebarOpenedStreamController;
   Stream<bool> isSidebarOpenedStream;
   StreamSink<bool> isSidebarOpenedSink;
-  final _animationDuration = const Duration(milliseconds: 500);
+  final _animationDuration = const Duration(milliseconds: 300);
 
   @override
   void initState() {
@@ -57,14 +57,18 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
           duration: _animationDuration,
           top: 0,
           bottom: 0,
-          left: isSideBarOpenedAsync.data ? 0 : 0,
+          left: isSideBarOpenedAsync.data ? 0 : -screenWidth,
           right: isSideBarOpenedAsync.data ? 0 : screenWidth - 45,
           child: Row(
             children: <Widget>[
               Expanded(
-                  child: Container(
-                color: AppColor.primary,
-              )),
+                child: Container(
+                  color: AppColor.primary,
+                  child: Column(
+                    children: <Widget>[],
+                  ),
+                ),
+              ),
               Align(
                 alignment: Alignment(0, -0.9),
                 child: GestureDetector(
@@ -74,7 +78,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                   child: Container(
                     width: 35.0,
                     height: 110.0,
-                    color: Colors.amber,
+                    color: AppColor.primary,
                     alignment: Alignment.centerLeft,
                     child: AnimatedIcon(
                       progress: _animationController.view,
