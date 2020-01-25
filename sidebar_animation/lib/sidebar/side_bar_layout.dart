@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sidebar_animation/home/home_page.dart';
+import '../pages/home_page.dart';
 
 import 'side_bar.dart';
 

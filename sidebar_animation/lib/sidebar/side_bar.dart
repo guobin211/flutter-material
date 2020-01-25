@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:sidebar_animation/constants/app_color.dart';
+
+import '../constants/app_color.dart';
+import '../sidebar/menu_item.dart';
 
 class SideBar extends StatefulWidget {
   @override
@@ -63,9 +66,82 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
             children: <Widget>[
               Expanded(
                 child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
                   color: AppColor.primary,
                   child: Column(
-                    children: <Widget>[],
+                    children: <Widget>[
+                      SizedBox(
+                        height: 80.0,
+                      ),
+                      ListTile(
+                        title: Text("GuoBin211",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        subtitle: Text("guobin211@gmail.com",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w400,
+                        ),),
+                        leading: CircleAvatar(
+                          child: Icon(
+                            Icons.perm_identity,
+                            color: Colors.white,
+                          ),
+                          radius: 40.0,
+                        ),
+                      ),
+                      Divider(
+                        height: 64.0,
+                        thickness: 0.5,
+                        color: Colors.white.withOpacity(0.3),
+                        indent: 16.0,
+                        endIndent: 16.0,
+                      ),
+                      MenuItem(
+                        icon: Icons.menu,
+                        title: "Home",
+                        onTap: () {
+                          onIconPressed();
+                          log("Home tap");
+                        },
+                      ),
+                      MenuItem(
+                        icon: Icons.account_box,
+                        title: "Account",
+                        onTap: () {
+                          onIconPressed();
+                          log("Account tap");
+                        },
+                      ),
+                      MenuItem(
+                        icon: Icons.shopping_basket,
+                        title: "Orders",
+                        onTap: () {
+                          onIconPressed();
+                          log("Orders tap");
+                        },
+                      ),
+                      Divider(
+                        height: 64.0,
+                        thickness: 0.5,
+                        color: Colors.white.withOpacity(0.3),
+                        indent: 16.0,
+                        endIndent: 16.0,
+                      ),
+                      MenuItem(
+                        icon: Icons.settings,
+                        title: "Setting",
+                      ),
+                      MenuItem(
+                        icon: Icons.exit_to_app,
+                        title: "Logout",
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -75,16 +151,19 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                   onTap: () {
                     onIconPressed();
                   },
-                  child: Container(
-                    width: 35.0,
-                    height: 110.0,
-                    color: AppColor.primary,
-                    alignment: Alignment.centerLeft,
-                    child: AnimatedIcon(
-                      progress: _animationController.view,
-                      icon: AnimatedIcons.menu_close,
-                      color: Color(0xFF1BB5FD),
-                      size: 25,
+                  child: ClipPath(
+                    clipper: CustomerMenuClipper(),
+                    child: Container(
+                      width: 35.0,
+                      height: 110.0,
+                      color: AppColor.primary,
+                      alignment: Alignment.centerLeft,
+                      child: AnimatedIcon(
+                        progress: _animationController.view,
+                        icon: AnimatedIcons.menu_close,
+                        color: Color(0xFF1BB5FD),
+                        size: 25,
+                      ),
                     ),
                   ),
                 ),
@@ -94,5 +173,29 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
         );
       },
     );
+  }
+}
+
+class CustomerMenuClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Paint paint = Paint();
+    paint.color = Colors.white;
+    final width = size.width;
+    final height = size.height;
+
+    Path path = Path();
+    path.moveTo(0, 0);
+    path.quadraticBezierTo(0, 8, 10, 16);
+    path.quadraticBezierTo(width - 1, height / 2 - 20, width, height / 2);
+    path.quadraticBezierTo(width + 1, height / 2 + 20, 10, height - 16);
+    path.quadraticBezierTo(0, height -8, 0, height);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
   }
 }
