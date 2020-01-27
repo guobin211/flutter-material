@@ -1,8 +1,8 @@
-import 'package:despicables_me/models/character.dart';
-import 'package:despicables_me/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
 import '../styleguide.dart';
+import '../models/character.dart';
+import '../pages/detail_page.dart';
 
 class CardWidget extends StatelessWidget {
   @override
@@ -15,8 +15,9 @@ class CardWidget extends StatelessWidget {
         Navigator.push(
           context,
           PageRouteBuilder(
-              transitionDuration: const Duration(milliseconds: 300),
-              pageBuilder: (context, _, __) => DetailPage(character: characters[0])),
+            transitionDuration: const Duration(milliseconds: 300),
+            pageBuilder: (context, _, __) => DetailPage(character: characters[0]),
+          ),
         );
       },
       child: Stack(

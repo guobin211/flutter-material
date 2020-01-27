@@ -1,6 +1,7 @@
-import 'package:despicables_me/styleguide.dart';
-import 'package:despicables_me/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../styleguide.dart';
+import '../widgets/card_widget.dart';
 
 class ListPage extends StatefulWidget {
   @override
