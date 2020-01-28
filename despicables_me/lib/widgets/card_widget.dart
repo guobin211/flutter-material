@@ -5,6 +5,13 @@ import '../models/character.dart';
 import '../pages/detail_page.dart';
 
 class CardWidget extends StatelessWidget {
+  final Character character;
+  final int currentPage;
+  final PageController pageController;
+
+  const CardWidget({Key key, this.character, this.currentPage, this.pageController})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -16,67 +23,77 @@ class CardWidget extends StatelessWidget {
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 300),
-            pageBuilder: (context, _, __) => DetailPage(character: characters[0]),
+            pageBuilder: (context, _, __) => DetailPage(character: character),
           ),
         );
       },
-      child: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: ClipPath(
-              clipper: MyCardBackgroundClipper(),
-              child: Hero(
-                tag: "background-${characters[0].name}",
-                child: Container(
-                  height: 0.6 * height,
-                  width: 0.9 * width,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: characters[0].colors,
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment(0, -0.5),
-            child: Hero(
-              tag: "image-{$characters[0].name}",
-              child: Image.asset(
-                characters[0].imagePath,
-                height: 0.55 * height,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 48, right: 16, bottom: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Hero(
-                  tag: "name-${characters[0].name}",
-                  child: Material(
-                    color: Colors.transparent,
+      child: AnimatedBuilder(
+        animation: pageController,
+        builder: (context, child) {
+          double value = 1;
+          if (pageController.position.haveDimensions) {
+            value = pageController.page - currentPage;
+            value = (1 - (value.abs() * 0.6)).clamp(0.1, 1.0);
+          }
+          return Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: ClipPath(
+                  clipper: MyCardBackgroundClipper(),
+                  child: Hero(
+                    tag: "background-${character.name}",
                     child: Container(
-                      child: Text(
-                        characters[0].name,
-                        style: AppTheme.heading,
+                      height: 0.6 * height,
+                      width: 0.9 * width,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: character.colors,
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft),
                       ),
                     ),
                   ),
                 ),
-                Text(
-                  "Tap to Read more",
-                  style: AppTheme.subHeading,
+              ),
+              Align(
+                alignment: Alignment(0, -0.5),
+                child: Hero(
+                  tag: "image-{$character.name}",
+                  child: Image.asset(
+                    character.imagePath,
+                    height: 0.55 * height * value,
+                  ),
                 ),
-              ],
-            ),
-          ),
-        ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 48, right: 16, bottom: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Hero(
+                      tag: "name-${character.name}",
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Container(
+                          child: Text(
+                            character.name,
+                            style: AppTheme.heading,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Tap to Read more",
+                      style: AppTheme.subHeading,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

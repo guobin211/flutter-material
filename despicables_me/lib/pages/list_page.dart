@@ -1,3 +1,4 @@
+import 'package:despicables_me/models/character.dart';
 import 'package:flutter/material.dart';
 
 import '../styleguide.dart';
@@ -9,11 +10,44 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
+  PageController _pageController;
+
+  int currentIndex = 0;
+
+  List<Widget> buildPageViews() {
+    List<Widget> _child = List();
+    for (var i = 0; i < characters.length; ++i) {
+      _child.add(
+        CardWidget(
+          character: characters[i],
+          currentPage: i,
+          pageController: _pageController,
+        ),
+      );
+    }
+    return _child;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(
+      viewportFraction: 1.0,
+      initialPage: currentIndex,
+      keepPage: false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
+        leading: IconButton(
+          onPressed: () {
+            print("pressed icon");
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         actions: <Widget>[
           Padding(
             padding: EdgeInsets.only(right: 18.0),
@@ -36,7 +70,9 @@ class _ListPageState extends State<ListPage> {
                   ]),
                 ),
               ),
-              Expanded(child: CardWidget())
+              Expanded(
+                child: PageView(controller: _pageController, children: buildPageViews()),
+              ),
             ],
           ),
         ),
