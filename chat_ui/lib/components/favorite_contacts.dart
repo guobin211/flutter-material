@@ -1,7 +1,7 @@
 import 'package:chat_ui/models/message_model.dart';
 import 'package:flutter/material.dart';
 
-class Favoriteontacts extends StatelessWidget {
+class FavouriteContacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -47,8 +47,7 @@ class Favoriteontacts extends StatelessWidget {
                       children: <Widget>[
                         CircleAvatar(
                           radius: 35.0,
-                          backgroundImage:
-                              AssetImage(favorites[index].imageUrl),
+                          backgroundImage: AssetImage(favorites[index].imageUrl),
                         ),
                         SizedBox(
                           height: 6.0,
@@ -56,9 +55,7 @@ class Favoriteontacts extends StatelessWidget {
                         Text(
                           favorites[index].name,
                           style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w600),
+                              color: Colors.blueGrey, fontSize: 16.0, fontWeight: FontWeight.w600),
                         )
                       ],
                     ),

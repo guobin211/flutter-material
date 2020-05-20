@@ -16,8 +16,7 @@ class HomeScreen extends StatelessWidget {
           color: Colors.white,
           onPressed: () {},
         ),
-        title: Text('Chats',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+        title: Text('Chats', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
@@ -36,10 +35,9 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30.0),
-                      topRight: Radius.circular(30.0))),
+                      topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0))),
               child: Column(
-                children: <Widget>[Favoriteontacts(), RecentChat()],
+                children: <Widget>[FavouriteContacts(), RecentChat()],
               ),
             ),
           )
