@@ -64,7 +64,7 @@ class _ListPageState extends State<ListPage> {
                 padding: EdgeInsets.only(left: 24.0, top: 8.0),
                 child: RichText(
                   text: TextSpan(children: [
-                    TextSpan(text: "Despicables", style: AppTheme.display1),
+                    TextSpan(text: "Despicable", style: AppTheme.display1),
                     TextSpan(text: "/n"),
                     TextSpan(text: "Characters", style: AppTheme.display2),
                   ]),

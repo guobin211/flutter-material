@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:rxdart/subjects.dart';
 
 import '../constants/app_color.dart';
 import '../sidebar/menu_item.dart';
@@ -74,19 +74,22 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         height: 80.0,
                       ),
                       ListTile(
-                        title: Text("GuoBin211",
+                        title: Text(
+                          "GuoBin211",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30.0,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        subtitle: Text("guobin211@gmail.com",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),
+                        subtitle: Text(
+                          "guobin211@gmail.com",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                         leading: CircleAvatar(
                           child: Icon(
                             Icons.perm_identity,
@@ -189,7 +192,7 @@ class CustomerMenuClipper extends CustomClipper<Path> {
     path.quadraticBezierTo(0, 8, 10, 16);
     path.quadraticBezierTo(width - 1, height / 2 - 20, width, height / 2);
     path.quadraticBezierTo(width + 1, height / 2 + 20, 10, height - 16);
-    path.quadraticBezierTo(0, height -8, 0, height);
+    path.quadraticBezierTo(0, height - 8, 0, height);
     path.close();
     return path;
   }
