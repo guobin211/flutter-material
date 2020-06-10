@@ -12,6 +12,7 @@ class MySliver extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             floating: true,
+            automaticallyImplyLeading: false,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               title: Text(
