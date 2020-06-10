@@ -29,6 +29,8 @@ class PostListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: posts.length, itemBuilder: _listItemBuilder);
+      itemCount: posts.length,
+      itemBuilder: _listItemBuilder,
+    );
   }
 }

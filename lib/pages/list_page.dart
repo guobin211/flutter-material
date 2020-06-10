@@ -58,12 +58,14 @@ class MyScaffold extends StatelessWidget {
         elevation: 0.0,
         bottom: buildTabBar(tabs),
       ),
-      body: buildTopTabView([
-        AppGridView(),
-        AppPageView(),
-        AppLayout(),
-        MySliver(),
-      ]),
+      body: Container(
+        child: buildTopTabView([
+          AppGridView(),
+          AppPageView(),
+          AppLayout(),
+          MySliver(),
+        ]),
+      ),
       drawer: AppDrawer(),
       bottomNavigationBar: AppBottomBar(),
     );
