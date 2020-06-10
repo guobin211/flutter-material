@@ -20,7 +20,7 @@ class MyScaffold extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  _buildTabBar() {
+  TabBar _buildTabBar() {
     return TabBar(
       unselectedLabelColor: Colors.black38,
       indicatorColor: Colors.black54,

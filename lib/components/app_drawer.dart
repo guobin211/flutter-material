@@ -8,13 +8,21 @@ class AppDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName:
-                Text('flutter', style: TextStyle(fontWeight: FontWeight.bold)),
+            accountName: Text(
+              'flutter',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             accountEmail: Text('https://flutter.cn'),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://flutter.cn/assets/flutter-lockup-c13da9c9303e26b8d5fc208d2a1fa20c1ef47eb021ecadf27046dea04c0cebf6.png',
-                  scale: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      'https://flutter.cn/assets/flutter-lockup-c13da9c9303e26b8d5fc208d2a1fa20c1ef47eb021ecadf27046dea04c0cebf6.png',
+                    ),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
               ),
             ),
             decoration: BoxDecoration(
