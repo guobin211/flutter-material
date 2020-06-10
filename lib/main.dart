@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaterial/core/app_theme.dart';
+import 'package:fluttermaterial/pages/favorite_page.dart';
 import 'package:fluttermaterial/pages/home_page.dart';
+import 'package:fluttermaterial/pages/list_page.dart';
+import 'package:fluttermaterial/pages/user_info_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,18 +16,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: _title,
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/home',
       routes: {
-        '/': (context) => HomePage(),
+        '/list': (context) => ListPage(),
+        '/home': (context) => HomePage(),
+        '/favorite': (context) => FavoritePage(),
+        '/user': (context) => UserInfoPage(),
       },
       theme: ThemeData(
         primarySwatch: AppTheme.primarySwatch,
         highlightColor: AppTheme.highlightColor,
         splashColor: AppTheme.splashColor,
-        accentColor:  AppTheme.accentColor,
+        accentColor: AppTheme.accentColor,
       ),
     );
   }
 }
-
-

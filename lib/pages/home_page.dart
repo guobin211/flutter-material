@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaterial/components/app_bottom_bar.dart';
 import 'package:fluttermaterial/components/app_drawer.dart';
-import 'package:fluttermaterial/components/app_tab_view.dart';
+import 'package:fluttermaterial/components/app_layout.dart';
+import 'package:fluttermaterial/components/content_warp.dart';
+import 'package:fluttermaterial/components/post_list_view.dart';
+import 'package:fluttermaterial/components/rich_text_span.dart';
+
+import 'common.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,50 +25,46 @@ class MyScaffold extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  TabBar _buildTabBar() {
-    return TabBar(
-      unselectedLabelColor: Colors.black38,
-      indicatorColor: Colors.black54,
-      indicatorSize: TabBarIndicatorSize.label,
-      indicatorWeight: 1.0,
-      tabs: <Widget>[
-        Tab(
-          icon: Icon(Icons.local_florist),
-        ),
-        Tab(
-          icon: Icon(Icons.change_history),
-        ),
-        Tab(
-          icon: Icon(Icons.directions_bike),
-        ),
-        Tab(icon: Icon(Icons.view_quilt),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            "flutter".toUpperCase(),
-            style: TextStyle(color: Colors.black),
+        title: Text(
+          "home".toUpperCase(),
+          style: TextStyle(color: Colors.black),
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
+              onPressed: null),
+        ],
+        elevation: 0.0,
+        bottom: buildTabBar([
+          Tab(
+            icon: Icon(Icons.local_florist),
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.black,
-                ),
-                onPressed: null),
-          ],
-          elevation: 0.0,
-          bottom: _buildTabBar()
+          Tab(
+            icon: Icon(Icons.change_history),
+          ),
+          Tab(
+            icon: Icon(Icons.directions_bike),
+          ),
+          Tab(
+            icon: Icon(Icons.view_quilt),
+          ),
+        ]),
       ),
-      body: AppTabView(),
+      body: buildTopTabView([
+        PostListView(),
+        RichTextSpan(),
+        ContentWarp(),
+        AppLayout(),
+      ]),
       drawer: AppDrawer(),
-      bottomNavigationBar: AppBottomBar()
+      bottomNavigationBar: AppBottomBar(),
     );
   }
 }

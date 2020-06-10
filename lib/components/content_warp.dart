@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaterial/components/box_size.dart';
-import 'package:fluttermaterial/components/post_list_view.dart';
-import 'package:fluttermaterial/components/rich_text_span.dart';
-
-class AppTabView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return TabBarView(children: [
-      PostListView(),
-      RichTextSpan(),
-      ContentWarp(),
-      Text("4"),
-    ]);
-  }
-}
 
 class ContentWarp extends StatelessWidget {
   @override
