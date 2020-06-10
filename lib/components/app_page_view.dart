@@ -15,11 +15,12 @@ class AppPageView extends StatelessWidget {
         );
       },
       child: Stack(
+        overflow: Overflow.clip,
         children: <Widget>[
           SizedBox.expand(
             child: Image.network(
               el.imageUrl,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           Positioned(
