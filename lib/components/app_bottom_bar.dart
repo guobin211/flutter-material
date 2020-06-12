@@ -13,11 +13,11 @@ class AppBottomBar extends StatefulWidget {
 class _AppBottomBarState extends State<AppBottomBar> {
   int _index = 0;
   void _onTap(BuildContext context, int index) {
-    this.setState(() {
-      _index = index;
-    });
-    setData(bottomIndex, index);
-    navTo(context, index);
+    debugPrint('$_index, $index');
+    if (index != _index) {
+      setData(bottomIndex, index);
+      navTo(context, index);
+    }
   }
 
   void navTo(BuildContext context, int index) {
@@ -69,7 +69,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
   void initState() {
     super.initState();
     this.setState(() {
-      _index = 0;
+      _index = getData(bottomIndex);
     });
   }
 

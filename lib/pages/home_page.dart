@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaterial/components/app_bottom_bar.dart';
+import 'package:fluttermaterial/components/app_data_table.dart';
+import 'package:fluttermaterial/components/app_dialog.dart';
 import 'package:fluttermaterial/components/app_drawer.dart';
-import 'package:fluttermaterial/components/app_layout.dart';
-import 'package:fluttermaterial/components/content_warp.dart';
+import 'package:fluttermaterial/components/chip_warp.dart';
 import 'package:fluttermaterial/components/post_list_view.dart';
-import 'package:fluttermaterial/components/rich_text_span.dart';
 
 import 'common.dart';
 
@@ -59,9 +59,9 @@ class MyScaffold extends StatelessWidget {
       ),
       body: buildTopTabView([
         PostListView(),
-        RichTextSpan(),
-        ContentWarp(),
-        AppLayout(),
+        AppDialog(),
+        ChipWarp(),
+        AppDataTable(),
       ]),
       drawer: AppDrawer(),
       bottomNavigationBar: AppBottomBar(),
