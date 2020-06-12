@@ -4,8 +4,11 @@ import 'package:fluttermaterial/pages/favorite_page.dart';
 import 'package:fluttermaterial/pages/home_page.dart';
 import 'package:fluttermaterial/pages/list_page.dart';
 import 'package:fluttermaterial/pages/user_info_page.dart';
+import 'package:fluttermaterial/store/data_center.dart';
 
 void main() {
+  // 初始化数据
+  initGlobalData();
   runApp(MyApp());
 }
 
