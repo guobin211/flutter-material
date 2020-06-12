@@ -8,8 +8,13 @@ class UserInfoPage extends StatefulWidget {
 class _UserInfoPageState extends State<UserInfoPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("_UserInfoPageState"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('userInfo'.toUpperCase()),
+      ),
+      body: Container(
+        child: Text('data'),
+      ),
     );
   }
 }

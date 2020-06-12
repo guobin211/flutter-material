@@ -22,7 +22,7 @@ class _FavoritePageState extends State<FavoritePage> {
         child: Container(
           padding: EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               AppCheckBox(),
             ],
