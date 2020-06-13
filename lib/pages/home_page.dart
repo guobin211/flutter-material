@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaterial/components/app_bottom_bar.dart';
-import 'package:fluttermaterial/components/app_data_table.dart';
 import 'package:fluttermaterial/components/app_dialog.dart';
 import 'package:fluttermaterial/components/app_drawer.dart';
+import 'package:fluttermaterial/components/box_size.dart';
 import 'package:fluttermaterial/components/chip_warp.dart';
 import 'package:fluttermaterial/components/post_list_view.dart';
 
@@ -61,7 +61,7 @@ class MyScaffold extends StatelessWidget {
         PostListView(),
         AppDialog(),
         ChipWarp(),
-        AppDataTable(),
+        BoxSize(),
       ]),
       drawer: AppDrawer(),
       bottomNavigationBar: AppBottomBar(),

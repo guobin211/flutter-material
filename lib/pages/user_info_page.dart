@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermaterial/service/http_demo.dart';
 
 class UserInfoPage extends StatefulWidget {
   @override
@@ -12,9 +13,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
       appBar: AppBar(
         title: Text('userInfo'.toUpperCase()),
       ),
-      body: Container(
-        child: Text('data'),
-      ),
+      body: HttpDemo(),
     );
   }
 }

@@ -21,9 +21,10 @@ class _ChipWarpState extends State<ChipWarp> {
   String _action = 'Nothing';
   List<String> _selected = [];
   String _choice = 'Lemon';
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
       child: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(16.0),
