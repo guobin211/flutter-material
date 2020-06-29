@@ -2,8 +2,7 @@
 
 flutter 混合应用开发, 作为module集成进 android 和 ios
 
-[![Design](https://github.com/guobin211/flutter-material/blob/master/_static/jay_home.png)](https://github.com/guobin211/flutter-material)
-
+<img src="https://github.com/guobin211/flutter-material/blob/master/_static/jay_home.png" width="360"/>
 
 ## flutter项目打包和优化
 
